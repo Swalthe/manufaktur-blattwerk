@@ -30,11 +30,27 @@ header img {
 }
 
 header h1 {
-    margin: 5px 0 10px;
+    margin: 5px 0 5px;
     font-size: 28px;
     background: #6f6a64;
     color: white;
     padding: 10px 20px;
+}
+
+/* NAV */
+nav {
+    margin-top: 5px;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #5c5148;
+    font-size: 14px;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
 
 /* TEXT */
@@ -100,6 +116,15 @@ header h1 {
     display: flex;
 }
 
+/* SECTIONS */
+section {
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
 /* FOOTER */
 footer {
     text-align: center;
@@ -112,13 +137,16 @@ footer {
 
 <body>
 
-<!-- HEADER -->
 <header>
     <img src="logo.png" alt="Logo Manufaktur Blattwerk">
     <h1>Manufaktur Blattwerk</h1>
+
+    <nav>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#impressum">Impressum</a>
+    </nav>
 </header>
 
-<!-- TEXT -->
 <section class="intro">
     <p>
     Handgebundene Notizbücher aus Holz, Leder und Papier.<br>
@@ -126,7 +154,6 @@ footer {
     </p>
 </section>
 
-<!-- GALERIE -->
 <section class="gallery">
 
 <div class="card"><img src="bilder/holz-notizbuch.jpg" alt="Holz Notizbuch"></div>
@@ -144,7 +171,27 @@ footer {
     <img src="" id="lightbox-img">
 </div>
 
-<!-- FOOTER -->
+<section id="kontakt" class="intro">
+    <h2>Kontakt</h2>
+    <p>
+    E-Mail: <a href="mailto:info@manufaktur-blattwerk.de">info@manufaktur-blattwerk.de</a><br>
+    
+    </p>
+</section>
+
+<section id="impressum" class="intro">
+    <h2>Impressum</h2>
+    <p>
+    Sascha Walther<br>
+    Manufaktur Blattwerk<br>
+    Hauptstraße 63<br>
+    63931 Kirchzell<br><br>
+
+    <br>
+    E-Mail: info@manufaktur-blattwerk.de
+    </p>
+</section>
+
 <footer>
 © 2026 Manufaktur Blattwerk
 </footer>
