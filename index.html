@@ -16,75 +16,68 @@ body {
 /* HEADER */
 header {
     text-align: center;
-    padding: 20px 20px 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px 20px 10px;
 }
 
 header img {
-    width: 280px;
+    width: 260px;
     max-width: 90%;
-    height: auto;
-    margin-bottom: 5px;
+    display: block;
+    margin: 0 auto 10px;
 }
 
 header h1 {
-    margin: 5px 0 5px;
+    margin: 0;
     font-size: 28px;
     background: #6f6a64;
     color: white;
+    display: inline-block;
     padding: 10px 20px;
 }
 
-/* NAV */
-nav {
-    margin-top: 5px;
+/* HERO */
+.hero {
+    max-width: 900px;
+    margin: 30px auto 10px;
+    padding: 0 20px;
 }
 
-nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #5c5148;
-    font-size: 14px;
-}
-
-nav a:hover {
-    text-decoration: underline;
+.hero img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 /* TEXT */
 .intro {
     text-align: center;
     max-width: 700px;
-    margin: 20px auto;
+    margin: 20px auto 30px;
     color: #5c5148;
+    line-height: 1.5;
 }
 
 /* GALERIE */
 .gallery {
-    column-count: 3;
-    column-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
     max-width: 1100px;
     margin: auto;
     padding: 20px;
 }
 
-@media (max-width: 900px) {
-    .gallery { column-count: 2; }
-}
-@media (max-width: 500px) {
-    .gallery { column-count: 1; }
-}
-
 .card {
     background: white;
-    margin-bottom: 20px;
     border-radius: 10px;
     overflow: hidden;
-    break-inside: avoid;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
 }
 
 .card img {
@@ -101,28 +94,19 @@ nav a:hover {
     height: 100%;
     background: rgba(0,0,0,0.85);
     display: none;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     z-index: 999;
 }
 
 .lightbox img {
     max-width: 90%;
     max-height: 90%;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .lightbox.active {
     display: flex;
-}
-
-/* SECTIONS */
-section {
-    padding: 20px;
-}
-
-h2 {
-    text-align: center;
 }
 
 /* FOOTER */
@@ -138,14 +122,13 @@ footer {
 <body>
 
 <header>
-    <img src="logo.png" alt="Logo Manufaktur Blattwerk">
+    <img src="logo.png" alt="Logo">
     <h1>Manufaktur Blattwerk</h1>
-
-    <nav>
-        <a href="#kontakt">Kontakt</a>
-        <a href="#impressum">Impressum</a>
-    </nav>
 </header>
+
+<section class="hero">
+    <img src="bilder/offen-fueller.jpg" alt="Notizbuch offen mit Füller">
+</section>
 
 <section class="intro">
     <p>
@@ -156,41 +139,27 @@ footer {
 
 <section class="gallery">
 
-<div class="card"><img src="bilder/holz-notizbuch.jpg" alt="Holz Notizbuch"></div>
-<div class="card"><img src="bilder/leder-notizbuch.jpg" alt="Leder Notizbuch"></div>
-<div class="card"><img src="bilder/kork-notizbuch.jpg" alt="Kork Notizbuch"></div>
-<div class="card"><img src="bilder/stoff-notizbuch-blau.jpg" alt="Blaues Notizbuch"></div>
-<div class="card"><img src="bilder/innen-seiten.jpg" alt="Innenseiten"></div>
-<div class="card"><img src="bilder/detail-bindung.jpg" alt="Bindung Detail"></div>
-<div class="card"><img src="bilder/bindung-handarbeit.jpg" alt="Handbindung"></div>
+<!-- NEUE BILDER (ohne Snoopy) -->
+<div class="card"><img src="bilder/geschlossen.jpg"></div>
+<div class="card"><img src="bilder/offen-fueller.jpg"></div>
+<div class="card"><img src="bilder/innen-detail.jpg"></div>
+<div class="card"><img src="bilder/seitenansicht.jpg"></div>
+<div class="card"><img src="bilder/ruecken-detail.jpg"></div>
+
+<!-- ALTE BILDER -->
+<div class="card"><img src="bilder/holz-notizbuch.jpg"></div>
+<div class="card"><img src="bilder/leder-notizbuch.jpg"></div>
+<div class="card"><img src="bilder/kork-notizbuch.jpg"></div>
+<div class="card"><img src="bilder/stoff-notizbuch-blau.jpg"></div>
+<div class="card"><img src="bilder/innen-seiten.jpg"></div>
+<div class="card"><img src="bilder/detail-bindung.jpg"></div>
+<div class="card"><img src="bilder/bindung-handarbeit.jpg"></div>
 
 </section>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
     <img src="" id="lightbox-img">
 </div>
-
-<section id="kontakt" class="intro">
-    <h2>Kontakt</h2>
-    <p>
-    E-Mail: <a href="mailto:info@manufaktur-blattwerk.de">info@manufaktur-blattwerk.de</a><br>
-    
-    </p>
-</section>
-
-<section id="impressum" class="intro">
-    <h2>Impressum</h2>
-    <p>
-    Sascha Walther<br>
-    Manufaktur Blattwerk<br>
-    Hauptstraße 63<br>
-    63931 Kirchzell<br><br>
-
-    <br>
-    E-Mail: info@manufaktur-blattwerk.de
-    </p>
-</section>
 
 <footer>
 © 2026 Manufaktur Blattwerk
