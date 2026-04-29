@@ -17,33 +17,24 @@ body {
 header {
     text-align: center;
     padding: 20px 20px 5px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 header img {
-    width: 280px;           /* Logo größer */
+    width: 280px;
     max-width: 90%;
     height: auto;
-    margin-bottom: 5px;     /* enger Abstand */
+    margin-bottom: 5px;
 }
 
 header h1 {
-    margin-top: 0;
+    margin: 5px 0 10px;
     font-size: 28px;
     background: #6f6a64;
     color: white;
-    display: inline-block;
     padding: 10px 20px;
-}
-
-/* HERO (kein riesiger Abstand mehr!) */
-.hero {
-    height: auto;
-    padding: 30px 20px;
-    text-align: center;
 }
 
 /* TEXT */
@@ -63,6 +54,13 @@ header h1 {
     padding: 20px;
 }
 
+@media (max-width: 900px) {
+    .gallery { column-count: 2; }
+}
+@media (max-width: 500px) {
+    .gallery { column-count: 1; }
+}
+
 .card {
     background: white;
     margin-bottom: 20px;
@@ -70,11 +68,36 @@ header h1 {
     overflow: hidden;
     break-inside: avoid;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    cursor: pointer;
 }
 
 .card img {
     width: 100%;
     display: block;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.lightbox.active {
+    display: flex;
 }
 
 /* FOOTER */
@@ -91,13 +114,9 @@ footer {
 
 <!-- HEADER -->
 <header>
-    <img src="logo.png" alt="Logo">
+    <img src="logo.png" alt="Logo Manufaktur Blattwerk">
     <h1>Manufaktur Blattwerk</h1>
 </header>
-
-<!-- HERO -->
-<section class="hero">
-</section>
 
 <!-- TEXT -->
 <section class="intro">
@@ -110,20 +129,41 @@ footer {
 <!-- GALERIE -->
 <section class="gallery">
 
-<div class="card"><img src="bilder/holz-notizbuch.jpg"></div>
-<div class="card"><img src="bilder/leder-notizbuch.jpg"></div>
-<div class="card"><img src="bilder/kork-notizbuch.jpg"></div>
-<div class="card"><img src="bilder/stoff-notizbuch-blau.jpg"></div>
-<div class="card"><img src="bilder/innen-seiten.jpg"></div>
-<div class="card"><img src="bilder/detail-bindung.jpg"></div>
-<div class="card"><img src="bilder/bindung-handarbeit.jpg"></div>
+<div class="card"><img src="bilder/holz-notizbuch.jpg" alt="Holz Notizbuch"></div>
+<div class="card"><img src="bilder/leder-notizbuch.jpg" alt="Leder Notizbuch"></div>
+<div class="card"><img src="bilder/kork-notizbuch.jpg" alt="Kork Notizbuch"></div>
+<div class="card"><img src="bilder/stoff-notizbuch-blau.jpg" alt="Blaues Notizbuch"></div>
+<div class="card"><img src="bilder/innen-seiten.jpg" alt="Innenseiten"></div>
+<div class="card"><img src="bilder/detail-bindung.jpg" alt="Bindung Detail"></div>
+<div class="card"><img src="bilder/bindung-handarbeit.jpg" alt="Handbindung"></div>
 
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <img src="" id="lightbox-img">
+</div>
 
 <!-- FOOTER -->
 <footer>
 © 2026 Manufaktur Blattwerk
 </footer>
+
+<script>
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+document.querySelectorAll('.card img').forEach(img => {
+    img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = img.src;
+    });
+});
+
+lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+});
+</script>
 
 </body>
 </html>
