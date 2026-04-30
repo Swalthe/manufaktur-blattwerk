@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manufaktur Blattwerk – Papeterie & Holzdesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --sand:    #efeae3;
+    --warm:    #e0d8cc;
+    --bark:    #2b2622;
+    --umber:   #5c5148;
+    --stone:   #7a7068;
+    --moss:    #3d5a3e;
+    --gold:    #9a7c4f;
+    --cream:   #f7f3ed;
+    --white:   #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--sand);
+    color: var(--bark);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    padding: 1.1rem 2.5rem;
+    background: rgba(239,234,227,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--warm);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  nav a {
+    color: var(--umber);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--moss); }
+
+  /* ── HEADER ── */
+  header {
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: brightness(0.55) saturate(0.8);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 3rem;
+    gap: 1.5rem;
+  }
+
+  .hero-logo {
+    width: 130px;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    animation: fadeUp 1s 0.15s ease both;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+
+  .hero-sub {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: rgba(247,243,237,0.85);
+    letter-spacing: 0.06em;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-scroll {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 1.5rem;
+    color: rgba(247,243,237,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: rgba(247,243,237,0.4);
+    margin: 0.6rem auto 0;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 1; }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--bark);
+  }
+
+  /* ── ÜBER MICH ── */
+  #ueber {
+    background: var(--cream);
+    border-top: 1px solid var(--warm);
+    border-bottom: 1px solid var(--warm);
+  }
+
+  .ueber-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .ueber-text p {
+    color: var(--umber);
+    margin-bottom: 1.2rem;
+  }
+
+  .ueber-text p:first-of-type {
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--bark);
+    border-left: 3px solid var(--gold);
+    padding-left: 1.2rem;
+  }
+
+  .ueber-img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 8px 8px 0 var(--warm), 16px 16px 0 var(--warm);
+    display: block;
+  }
+
+  /* ── GALERIE ── */
+  #galerie { background: var(--sand); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  /* Asymmetrisches Layout */
+  .g1  { grid-column: 1 / 8;  grid-row: 1; }
+  .g2  { grid-column: 8 / 13; grid-row: 1; }
+  .g3  { grid-column: 1 / 5;  grid-row: 2; }
+  .g4  { grid-column: 5 / 9;  grid-row: 2; }
+  .g5  { grid-column: 9 / 13; grid-row: 2; }
+  .g6  { grid-column: 1 / 6;  grid-row: 3; }
+  .g7  { grid-column: 6 / 13; grid-row: 3; }
+  .g8  { grid-column: 1 / 5;  grid-row: 4; }
+  .g9  { grid-column: 5 / 9;  grid-row: 4; }
+  .g10 { grid-column: 9 / 13; grid-row: 4; }
+  .g11 { grid-column: 1 / 7;  grid-row: 5; }
+  .g12 { grid-column: 7 / 13; grid-row: 5; }
+
+  .gcard {
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .gcard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    min-height: 200px;
+  }
+
+  .gcard:hover img {
+    transform: scale(1.04);
+    filter: brightness(0.85);
+  }
+
+  .gcard::after {
+    content: '↗';
+    position: absolute;
+    bottom: 1rem; right: 1rem;
+    color: white;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .gcard:hover::after { opacity: 1; }
+
+  /* ── MATERIALIEN ── */
+  #materialien {
+    background: var(--bark);
+    color: var(--cream);
+  }
+
+  #materialien .section-label { color: var(--gold); }
+  #materialien h2 { color: var(--cream); }
+
+  .mat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .mat-item {
+    border: 1px solid rgba(247,243,237,0.15);
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .mat-item:hover {
+    background: rgba(247,243,237,0.06);
+    border-color: var(--gold);
+  }
+
+  .mat-item .mat-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .mat-item .mat-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    display: block;
+  }
+
+  .mat-text {
+    max-width: 650px;
+    margin: 0 auto 0 0;
+    color: rgba(247,243,237,0.7);
+    line-height: 1.8;
+  }
+
+  .mat-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 0;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.93);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    cursor: pointer;
+  }
+
+  .lightbox.active { display: flex; }
+
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 92vh;
+    border-radius: 4px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+
+  .lb-close {
+    position: absolute;
+    top: 1.5rem; right: 2rem;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    font-family: sans-serif;
+    line-height: 1;
+  }
+  .lb-close:hover { opacity: 1; }
+
+  /* ── KONTAKT / IMPRESSUM ── */
+  #kontakt {
+    background: var(--cream);
+    border-top: 1px solid var(--warm);
+  }
+
+  .kontakt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .kontakt-grid h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: var(--bark);
+  }
+
+  .kontakt-grid p, .kontakt-grid address {
+    color: var(--umber);
+    font-style: normal;
+    line-height: 2;
+  }
+
+  .kontakt-grid a {
+    color: var(--moss);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .kontakt-grid a:hover { border-color: var(--moss); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    color: var(--stone);
+    background: var(--bark);
+    color: rgba(247,243,237,0.4);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { gap: 1.2rem; padding: 1rem 1.5rem; font-size: 0.75rem; }
+
+    .ueber-grid,
+    .mat-cols,
+    .kontakt-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .g1, .g2, .g3, .g4, .g5, .g6, .g7,
+    .g8, .g9, .g10, .g11, .g12 {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .ueber-img { order: -1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#ueber">Über mich</a>
+  <a href="#galerie">Galerie</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<!-- HERO -->
+<header>
+  <img class="hero-img" src="bilder/offen-fueller.jpg" alt="Handgebundenes Notizbuch mit Füller">
+  <div class="hero-content">
+    <img class="hero-logo" src="logo.png" alt="Manufaktur Blattwerk Logo">
+    <h1 class="hero-title">Manufaktur<br>Blattwerk</h1>
+    <p class="hero-sub">Papeterie &amp; Holzdesign · Kirchzell</p>
+  </div>
+  <div class="hero-scroll">Entdecken</div>
+</header>
+
+<!-- ÜBER MICH -->
+<section id="ueber">
+  <div class="container">
+    <div class="ueber-grid">
+      <div class="ueber-text">
+        <p class="section-label">Über mich</p>
+        <h2>Mit Bedacht<br>gemacht</h2>
+        <p>Ich glaube, dass ein Gegenstand dann gelingt, wenn man spürt, dass jemand ihn mit Bedacht gemacht hat. Diesen Anspruch nehme ich mit in jede Arbeit, die ich in meiner kleinen Manufaktur in Kirchzell beginne — und mit den Jahren werden es immer weniger Kompromisse. Ich binde mich nicht an das, was immer so gemacht wurde. Wo ich auf Grenzen stoße, suche ich eigene Wege — und habe dabei Lösungen entwickelt, die es in der Buchbinderei so noch nicht gab.</p>
+        <p>Papier, Holz, Leder, Kork, Leinen — jedes Material spricht eine eigene Sprache. In der Manufaktur Blattwerk werden sie zusammengeführt: zu handgebundenen Notizbüchern, die so gestaltet sind, dass Material, Form und Funktion in Einklang stehen.</p>
+        <p>Hinter jedem Buch steckt ein breites handwerkliches Fundament. Das Papier entsteht teilweise von Hand, geschöpft aus sorgfältig gewählten Fasern. Die Deckel werden aus Holz, Kork oder Leinen gefertigt — und oft mit Intarsien versehen: eingelegten Holzmotiven, die jedes Stück unverwechselbar machen. Die Bindung folgt traditionellen Techniken, die Langlebigkeit und Öffnungskomfort verbinden.</p>
+        <p>Jedes Buch entsteht als Unikat — für einen bestimmten Menschen oder einen bestimmten Moment. Das ist kein Versprechen der Werbung, es ist die schlichte Natur von Handarbeit.</p>
+      </div>
+      <div>
+        <img class="ueber-img" src="bilder/bindung-handarbeit.jpg" alt="Handarbeit beim Buchbinden">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section id="galerie">
+  <div class="container">
+    <p class="section-label">Galerie</p>
+    <h2>Jedes Stück<br>ein Unikat</h2>
+    <div class="gallery-grid">
+      <div class="gcard g1"><img src="bilder/holz-notizbuch.jpg" alt="Holznotizbuch"></div>
+      <div class="gcard g2"><img src="bilder/leder-notizbuch.jpg" alt="Ledernotizbuch"></div>
+      <div class="gcard g3"><img src="bilder/kork-notizbuch.jpg" alt="Korknotizbuch"></div>
+      <div class="gcard g4"><img src="bilder/stoff-notizbuch-blau.jpg" alt="Stoffnotizbuch blau"></div>
+      <div class="gcard g5"><img src="bilder/detail-bindung.jpg" alt="Detail Bindung"></div>
+      <div class="gcard g6"><img src="bilder/geschlossen.jpg" alt="Buch geschlossen"></div>
+      <div class="gcard g7"><img src="bilder/innen-detail.jpg" alt="Innendetail"></div>
+      <div class="gcard g8"><img src="bilder/ruecken-detail.jpg" alt="Rücken Detail"></div>
+      <div class="gcard g9"><img src="bilder/innen-seiten.jpg" alt="Innenseiten"></div>
+      <div class="gcard g10"><img src="bilder/seitenansicht.jpg" alt="Seitenansicht"></div>
+      <div class="gcard g11"><img src="bilder/offen-fueller.jpg" alt="Notizbuch offen mit Füller"></div>
+      <div class="gcard g12"><img src="bilder/bindung-handarbeit.jpg" alt="Bindung Handarbeit"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALIEN -->
+<section id="materialien">
+  <div class="container">
+    <p class="section-label">Materialien</p>
+    <div class="mat-cols">
+      <div>
+        <h2>Natürlich.<br>Dauerhaft.<br>Handgemacht.</h2>
+        <p class="mat-text">Ich arbeite ausschließlich mit Materialien, die ich kenne und verstehe. Jede Textur, jede Eigenschaft fließt in die Gestaltung ein — so entsteht kein Standardprodukt, sondern ein Objekt mit Charakter.</p>
+      </div>
+      <div class="mat-grid">
+        <div class="mat-item"><div class="mat-icon">🪵</div><span class="mat-name">Holz</span></div>
+        <div class="mat-item"><div class="mat-icon">🍂</div><span class="mat-name">Leder</span></div>
+        <div class="mat-item"><div class="mat-icon">🌿</div><span class="mat-name">Kork</span></div>
+        <div class="mat-item"><div class="mat-icon">🧵</div><span class="mat-name">Leinen</span></div>
+        <div class="mat-item"><div class="mat-icon">📄</div><span class="mat-name">Papier</span></div>
+        <div class="mat-item"><div class="mat-icon">✦</div><span class="mat-name">Intarsien</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT & IMPRESSUM -->
+<section id="kontakt">
+  <div class="container">
+    <div class="kontakt-grid">
+      <div>
+        <p class="section-label">Kontakt</p>
+        <h3>Interesse an einem<br>Unikat für Sie?</h3>
+        <p>
+          Schreiben Sie mir — ich freue mich über jede Anfrage.<br>
+          <a href="mailto:info@manufaktur-blattwerk.de">info@manufaktur-blattwerk.de</a>
+        </p>
+      </div>
+      <div>
+        <p class="section-label">Impressum</p>
+        <address>
+          Sascha Walther<br>
+          Manufaktur Blattwerk<br>
+          Hauptstraße 63<br>
+          63931 Kirchzell<br><br>
+          <a href="mailto:info@manufaktur-blattwerk.de">info@manufaktur-blattwerk.de</a>
+        </address>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Manufaktur Blattwerk · Sascha Walther · Kirchzell
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lb-close" id="lb-close">×</span>
+  <img src="" id="lightbox-img" alt="">
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lbClose = document.getElementById('lb-close');
+
+  document.querySelectorAll('.gcard img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  lightbox.addEventListener('click', closeLightbox);
+  lbClose.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
